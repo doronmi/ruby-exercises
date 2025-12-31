@@ -13,4 +13,20 @@ def permutations(array)
   #
   # NOTE: the tests do not check for ordering, so a return of `[[1, 2], [2, 1]]`
   # will be treated the same as `[[2, 1], [1, 2]]`
+
+  permutation_array = []
+  array.each do |element|
+    if array.size >= 2
+      permutations(array - Array(element)).each do |perm_res|
+        permutation_array << Array(element) + perm_res
+      end
+    else
+      permutation_array << Array(element)
+    end
+  end
+  permutation_array
+
 end
+
+
+p permutations([1,2,3])
